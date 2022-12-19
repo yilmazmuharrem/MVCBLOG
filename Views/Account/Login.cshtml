@@ -1,0 +1,58 @@
+﻿@model Blog.Models.Login
+@{
+    ViewBag.Title = "Login";
+}
+
+<div class="container">
+    <br />
+    <div class="row">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/Home/Index">Anasayfa</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Giriş Formu</li>
+            </ol>
+        </nav>
+        <div class="col-md-8">
+            <!--Makale Listesi-->
+            <div class="img-thumbnail">
+                <br />
+                @using (Html.BeginForm("Login", "Account", new { @class = "row",ReturnUrl=Request.QueryString["ReturnUrl"], FormMethod.Post }))
+                {
+                   
+                    <div class="row mb-3" style="text-align:center">
+                        <label class="col-sm-2 col-form-label">Kullanıcı Adı</label>
+                        <div class="col-sm-4">
+                            @Html.EditorFor(m => m.Username, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                 
+                    <div class="row mb-3" style="text-align:center">
+                        <label class="col-sm-2 col-form-label">Şifre</label>
+                        <div class="col-sm-4">
+                            @Html.EditorFor(m => m.Password, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                   
+                    <div class="row mb-3" style="text-align:center">
+                        <label class="col-sm-2 col-form-label"></label>
+                        <div class="col-sm-4">
+                            <button type="submit" class="btn btn-outline-success col-6"><i class="bi bi-box-arrow-in-right"></i> Giriş</button>
+                        </div>
+                    </div>
+                }
+
+            </div>
+
+
+        </div>
+        <div class="col-md-4">
+            <!--Kategori Listesi-->
+            @Html.Action("KategoriListesi", "Kategori")
+            <br />
+            @Html.Action("EnCokOkunan", "Home")
+        </div>
+    </div>
+</div>
+

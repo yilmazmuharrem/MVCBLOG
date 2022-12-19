@@ -1,0 +1,81 @@
+﻿@model IEnumerable<Blog.Models.MakaleModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container">
+    <br />
+    @if (Model.Count() == 0)
+    {
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Uyarı!</strong> Makale Yok.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+    else
+    {
+        <table class="table">
+            <tr>
+
+                <th>
+                    Kullanıcı Adı
+                </th>
+                <th>
+                    Başlık
+                </th>
+
+                <th>
+                    Açıklama
+                </th>
+                <th>
+                    Tarih
+                </th>
+
+                <th>
+                    Onay
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>
+                        <label class="btn btn-primary btn-sm">@item.KullaniciAd</label>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Baslik)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Aciklama)
+                    </td>
+                    <td>
+                        @item.YayinTarih.ToString("dd-MM-yyyy")
+                    </td>
+
+                    <td>
+                        @if (item.Onay)
+                        {
+                            <label class="btn btn-success btn-sm"><i class="bi bi-check-circle"></i> Evet</label>
+                        }
+                        else
+                        {
+                            <label class="btn btn-danger btn-sm"><i class="bi bi-x-circle"></i> Hayır</label>
+                        }
+                    </td>
+                    <td>
+                        <a class="btn btn-outline-primary" href="@Url.Action("Edit", new { id = item.Id })"><i class="bi bi-pencil"></i> Düzenle</a>
+                        <a class="btn btn-outline-danger" href="@Url.Action("Delete", new { id = item.Id })"><i class="bi bi-trash"></i> Sil</a>
+                    </td>
+                </tr>
+            }
+
+        </table>
+    }
+
+
+
+</div>

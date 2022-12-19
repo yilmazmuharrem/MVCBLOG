@@ -1,0 +1,46 @@
+﻿
+<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+    @if (Request.IsAuthenticated)
+    {
+        if (this.User.IsInRole("admin"))
+        {
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/Admin/Index">Admin Paneli</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/Makale/Index">@User.Identity.Name</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/Account/Profil">Profilim</a>
+            </li>
+            <li class="nav-item">
+                
+                <a class="btn btn-outline-danger" aria-current="page" href="/Account/LogOut"><i class="bi bi-x-circle-fill"></i> Çıkış</a>
+                <a class="btn btn-outline-info" aria-current="page" href="/Makale/Create"><i class="bi bi-pencil"></i> Yazar Ol</a>
+            </li>
+        }
+        else
+        {
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/Makale/Index">@User.Identity.Name</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/Account/Profil">Profilim</a>
+            </li>
+            <li class="nav-item">
+
+                <a class="btn btn-outline-danger" aria-current="page" href="/Account/LogOut"><i class="bi bi-x-circle-fill"></i> Çıkış</a>
+                <a class="btn btn-outline-info" aria-current="page" href="/Makale/Create"><i class="bi bi-pencil"></i> Yazar Ol</a>
+            </li>
+        }
+    }
+    else
+    {
+        <li class="nav-item">
+            <a class="btn btn-outline-success" aria-current="page" href="/Account/Register"><i class="bi bi-person-circle"></i> Üye Ol</a>
+            <a class="btn btn-outline-primary" aria-current="page" href="/Account/Login"><i class="bi bi-box-arrow-in-right"></i> Giriş</a>
+            <a class="btn btn-outline-info" aria-current="page" href="/Account/Login"><i class="bi bi-pencil"></i> Yazar Ol</a>
+        </li>
+    }
+   
+</ul>

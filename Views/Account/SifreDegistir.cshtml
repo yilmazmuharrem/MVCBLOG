@@ -1,0 +1,68 @@
+﻿@model Blog.Models.SifreDegistirme
+@{
+    ViewBag.Title = "SifreDegistir";
+}
+
+<div class="container">
+    <br />
+    <div class="row">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/Home/Index">Anasayfa</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Şifre Değiştirme</li>
+            </ol>
+        </nav>
+        <div class="col-md-8">
+            <!--Makale Listesi-->
+            <div class="img-thumbnail">
+                <br />
+                @using (Html.BeginForm("SifreDegistir", "Account", FormMethod.Post, new { @class = "row" }))
+                {
+                    @Html.AntiForgeryToken()
+                   
+                    <div class="row mb-3" style="text-align:center">
+                        <label class="col-sm-2 col-form-label">Eski Şifre</label>
+                        <div class="col-sm-4">
+                            @Html.PasswordFor(m => m.OldPassword, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(m => m.OldPassword, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="row mb-3" style="text-align:center">
+                        <label class="col-sm-2 col-form-label">Yeni Şifre</label>
+                        <div class="col-sm-4">
+                            @Html.EditorFor(m => m.NewPassword, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(m => m.NewPassword, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="row mb-3" style="text-align:center">
+                        <label class="col-sm-2 col-form-label">Şifre Tekrar</label>
+                        <div class="col-sm-4">
+                            @Html.EditorFor(m => m.ConNewPassword, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(m => m.ConNewPassword, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    
+
+                    <div class="row mb-3" style="text-align:center">
+                        <label class="col-sm-2 col-form-label"></label>
+                        <div class="col-sm-4">
+                            <button type="submit" class="btn btn-outline-primary col-8"><i class="bi bi-pencil"></i> Şifre Değiştir</button>
+                        </div>
+                    </div>
+                }
+
+            </div>
+
+
+        </div>
+        <div class="col-md-4">
+            <!--Kategori Listesi-->
+            @Html.Action("KategoriListesi", "Kategori")
+            <br />
+            @Html.Action("EnCokOkunan", "Home")
+        </div>
+    </div>
+</div>
+
+
+

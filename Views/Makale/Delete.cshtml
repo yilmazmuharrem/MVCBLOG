@@ -1,0 +1,84 @@
+﻿@model Blog.Models.Makale
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div class="container">
+    <br />
+
+
+    <h3>Bu makaleyi silmek istediğinizden emin misiniz?</h3>
+    <div>
+        
+        <dl class="dl-horizontal">
+           
+
+            <dt>
+                @Html.DisplayNameFor(model => model.KullaniciAd)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.KullaniciAd)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Baslik)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Baslik)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Resim)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Resim)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Aciklama)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Aciklama)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.YayinTarih)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.YayinTarih)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Goruntulenme)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Goruntulenme)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Onay)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Onay)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <button type="submit" class="btn btn-outline-danger"><i class="bi bi-trash"></i> Sil</button>
+                <a href="/Makale/Index" class="btn btn-outline-warning"><i class="bi bi-file-earmark"></i> Makale Listesi</a>
+            </div>
+    }
+    </div>
+</div>

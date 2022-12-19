@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Blog.Models.Kategori>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container">
+    <br />
+    <div class="row">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/Admin/Index">Admin Sayfası</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Kategori Listesi</li>
+            </ol>
+        </nav>
+        <a class="btn btn-outline-primary col-12" href="@Url.Action("Create")">Kategori Ekle</a>
+        <table class="table">
+            <tr>
+                <th>
+                   Kategori Adı
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.KategoriAd)
+                    </td>
+                    <td>
+                        <a class="btn btn-outline-primary" href="@Url.Action("Edit", new { id = item.Id })"><i class="bi bi-pencil"></i> Düzenle</a>
+                        <a class="btn btn-outline-danger" href="@Url.Action("Delete", new { id = item.Id })"><i class="bi bi-trash"></i> Sil</a>
+                       
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>
+

@@ -1,0 +1,42 @@
+﻿@model Blog.Models.Kategori
+
+@{
+    ViewBag.Title = "Delete";
+}
+<div class="container">
+    <br />
+    <div class="row">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/Admin/Index">Admin Sayfası</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Kategori Silme</li>
+            </ol>
+        </nav>
+        <h3>Bu kaydı silmek istediğinizden emin misiniz?</h3>
+        <div>
+            
+            <dl class="dl-horizontal">
+                <dt>
+                    Kategori Adı
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.KategoriAd)
+                </dd>
+
+            </dl>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <button type="submit" class="btn btn-outline-danger"><i class="bi bi-trash"></i> Sil</button>
+                    <a href="/Kategori/Index" class="btn btn-outline-warning"><i class="bi bi-file-earmark"></i> Kategori Listesi</a>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+
